@@ -25,6 +25,7 @@ before_action :correct_user, only: [:edit, :update, :destroy]
       render action: 'new'
     end
   end
+
   def update
     if @pin.update(pin_params)
       redirect_to @pin, notice: 'Pin was successfully updated.'
@@ -49,8 +50,10 @@ before_action :correct_user, only: [:edit, :update, :destroy]
       redirect_to pins_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    
     def pin_params
       params.require(:pin).permit(:description, :image)
     end
+
+
 end
